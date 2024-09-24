@@ -8,6 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// remove points from users account if request is valid
 func SpendHandler(requestData *gin.Context) {
 
 	var clientData models.SpendRequest
