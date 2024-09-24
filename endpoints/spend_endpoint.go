@@ -1,7 +1,6 @@
 package endpoints
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/ClayUA/FetchTakehomeClayTruelove/models"
@@ -15,14 +14,12 @@ func SpendHandler(requestData *gin.Context) {
 
 	err := requestData.ShouldBind(&clientData)
 	if err != nil {
-		fmt.Printf("Could not bind JSON data")
-		requestData.Status(http.StatusBadRequest)
+		requestData.JSON(http.StatusBadRequest, "JSON format error")
 		return
 	}
 	// checking that we have enough points
 	if clientData.Points > models.CurrentUser.TotalPoints {
-		fmt.Printf("User does not have enough points to complete transaction")
-		requestData.Status(http.StatusBadRequest)
+		requestData.JSON(http.StatusBadRequest, "Not Enough Points to complete transaction")
 		return
 	}
 

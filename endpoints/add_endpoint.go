@@ -1,7 +1,6 @@
 package endpoints
 
 import (
-	"fmt"
 	"net/http"
 	"time"
 
@@ -23,13 +22,13 @@ func AddHandler(requestData *gin.Context) {
 	}
 	// Payers cannot have a negative balance
 	if models.CurrentUser.PayerMap[clientData.Payer]+clientData.Points < 0 {
-		fmt.Errorf("Adding %d points would cause %s to have a negative balance.", clientData.Points, clientData.Payer)
+		requestData.JSON(http.StatusBadRequest, "Payer balances cannot be negative")
 		return
 	}
 	// checking to make sure date time format is valid
 	parsedTime, err := time.Parse(time.RFC3339, clientData.Timestamp)
 	if err != nil {
-		fmt.Errorf("Invalid timestamp format: %v", err)
+		requestData.JSON(http.StatusBadRequest, "Invalid time format")
 		return
 	}
 	clientData.ParsedTime = parsedTime

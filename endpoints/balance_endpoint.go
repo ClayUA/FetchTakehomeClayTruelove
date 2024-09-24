@@ -12,7 +12,7 @@ import (
 func BalanceHandler(requestData *gin.Context) {
 
 	if len(models.CurrentUser.PayerMap) <= 0 {
-		requestData.JSON(http.StatusNotFound, gin.H{"error": "No Balances found"})
+		requestData.JSON(http.StatusNotFound, "No Balances found")
 		return
 	}
 
