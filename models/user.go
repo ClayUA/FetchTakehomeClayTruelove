@@ -10,7 +10,7 @@ type User struct {
 	PayerMap           map[string]int
 	SortedTransactions *TransactionHeap
 	TotalPoints        int
-	mu                 sync.Mutex
+	Mutex              sync.Mutex
 }
 
 // global user instance we will use for this assessment

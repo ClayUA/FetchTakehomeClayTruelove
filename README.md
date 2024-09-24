@@ -1,3 +1,3 @@
 # How to Run
-Simple use the command ```make run```
-and the API should be running on port 8000
+Use the command ```make run```
+and the API will beginning listening on port 8000

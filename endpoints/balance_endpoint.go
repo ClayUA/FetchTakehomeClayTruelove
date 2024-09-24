@@ -9,15 +9,15 @@ import (
 
 // endpoint that fetches our users map of payer balances
 // and returns them in json format
-func BalanceHandler(request_data *gin.Context) {
+func BalanceHandler(requestData *gin.Context) {
 
 	if len(models.CurrentUser.PayerMap) <= 0 {
-		request_data.JSON(http.StatusNotFound, gin.H{"error": "No Balances found"})
+		requestData.JSON(http.StatusNotFound, gin.H{"error": "No Balances found"})
 		return
 	}
 
 	payers := models.CurrentUser.RetrieveUserBalance()
-	request_data.IndentedJSON(http.StatusOK, payers)
+	requestData.IndentedJSON(http.StatusOK, payers)
 	return
 
 }

@@ -12,29 +12,29 @@ import (
 
 // enpoint that adds points to users total points
 // and updates his payers points in the PayerMap
-func AddHandler(request_data *gin.Context) {
+func AddHandler(requestData *gin.Context) {
 
-	var ClientData models.Transaction
+	var clientData models.Transaction
 
-	err := request_data.Bind(&ClientData)
+	err := requestData.Bind(&clientData)
 	if err != nil {
-		request_data.JSON(http.StatusBadRequest, err.Error())
+		requestData.JSON(http.StatusBadRequest, err.Error())
 		return
 	}
 	// Payers cannot have a negative balance
-	if models.CurrentUser.PayerMap[ClientData.Payer]+ClientData.Points < 0 {
-		fmt.Errorf("Adding %d points would cause %s to have a negative balance.", ClientData.Points, ClientData.Payer)
+	if models.CurrentUser.PayerMap[clientData.Payer]+clientData.Points < 0 {
+		fmt.Errorf("Adding %d points would cause %s to have a negative balance.", clientData.Points, clientData.Payer)
 		return
 	}
 	// checking to make sure date time format is valid
-	parsedTime, err := time.Parse(time.RFC3339, ClientData.Timestamp)
+	parsedTime, err := time.Parse(time.RFC3339, clientData.Timestamp)
 	if err != nil {
 		fmt.Errorf("Invalid timestamp format: %v", err)
 		return
 	}
-	ClientData.ParsedTime = parsedTime
+	clientData.ParsedTime = parsedTime
 
-	models.CurrentUser.AddUserPoints(&ClientData)
-	request_data.Status(http.StatusOK)
+	models.CurrentUser.AddUserPoints(&clientData)
+	requestData.Status(http.StatusOK)
 
 }

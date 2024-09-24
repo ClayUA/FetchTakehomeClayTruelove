@@ -5,6 +5,7 @@ import "container/heap"
 // creating a heap that can store and pop the oldest transactions
 type TransactionHeap []Transaction
 
+// lenght is required to access the minimum item
 func (h TransactionHeap) Len() int {
 	return len(h)
 }
@@ -14,6 +15,7 @@ func (h TransactionHeap) Less(i, j int) bool {
 	return h[i].ParsedTime.Before(h[j].ParsedTime)
 }
 
+// swaps the location of items
 func (h TransactionHeap) Swap(i, j int) {
 	h[i], h[j] = h[j], h[i]
 }

@@ -8,24 +8,24 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func SpendHandler(request_data *gin.Context) {
+func SpendHandler(requestData *gin.Context) {
 
-	var ClientData models.SpendRequest
+	var clientData models.SpendRequest
 
-	err := request_data.Bind(&ClientData)
+	err := requestData.Bind(&clientData)
 	if err != nil {
 		fmt.Printf("Could not bind JSON data")
-		request_data.Status(http.StatusBadRequest)
+		requestData.Status(http.StatusBadRequest)
 		return
 	}
 	// checking that we have enough points
-	if ClientData.Points > models.CurrentUser.TotalPoints {
+	if clientData.Points > models.CurrentUser.TotalPoints {
 		fmt.Printf("User does not have enough points to complete transaction")
-		request_data.Status(http.StatusBadRequest)
+		requestData.Status(http.StatusBadRequest)
 		return
 	}
 
-	request_data.IndentedJSON(http.StatusOK, models.CurrentUser.SpendUserPoints(ClientData.Points))
+	requestData.IndentedJSON(http.StatusOK, models.CurrentUser.SpendUserPoints(clientData.Points))
 	return
 
 }
