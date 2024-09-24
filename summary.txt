@@ -5,25 +5,30 @@ and has a ton of libraries, but runs slower and has some concurrency concerns wi
 I could have used something like Java or Node.js as well, but I really like Golang for speed, scalability, and concurrency.
 
 I chose gin purely from familiarity and I knew it would speed up my development. I have used it before and
-it is a very simple library for manipulating incoming connections. 
+it is a very simple library for manipulating incoming connections as well as returning http status codes and error data. 
 
 Most of the libraries like sync, time, and net/http are in the standard library for go. Another reason why it is a good choice.
 
 
+
+
 2. What are the advantages and disadvantages of your solution?
 
-One advantage my solution has is consistency. I completely lock the user struct when I read or write data.
-This ensures consistent because only one process can access class variables at a time.  With a more broad locking technique
-certain variables may be locked that are never updated or changed. This can slow down the entire system as other processes
-wait for locked variables that aren't being used. Using a lock for each variable would allow more operations to run concurrently, but
-may be more complex to implement and maintain. It would also become increasingly memory heavy as the backend scales.
-Ultimately I chose to start broad because consistency is extremely important when you are working with money or currency based variables.
-It would be a good idea to target bottlenecks and have a more targeted lock approach.
+    One advantage my solution has is consistency. I completely lock the user struct when I read or write data.
+This ensures consistent because only one process can access class variables at a time.  With a more broad locking
+technique certain variables may be locked that are never updated or changed. This can slow down the entire system
+as other processes wait for locked variables that aren't being used. Using a lock for each variable would allow more
+operations to run concurrently, but may be more complex to implement. It would also become increasingly memory heavy
+as the backend scales. Ultimately I chose to start broad because  consistency is extremely important when you are working
+with money or currency based variables. It would be a good idea to target bottlenecks and have a more targeted lock approach in the future.
 
-Another advantage my solution has is speed. Using a heap is a really fast way to push and pop transactions because it is
+    Another advantage my solution is speed. Using a heap is a really fast way to push and pop transactions because it is
 represented as a tree structure. Although it is technically a tree structure, it is represented by an array which means we don't have to deal
 with storing pointers in memory, saving a large amount of space. A heap allows us to push new transactions and pop the oldest transaction in O(log n)
 which is much faster compared to sorting and array or linked list.
+
+
+
 
 3. What has been a favorite school/personal project thus far? What about it that challenged you?
 
