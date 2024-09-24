@@ -16,7 +16,7 @@ func AddHandler(requestData *gin.Context) {
 
 	var clientData models.Transaction
 
-	err := requestData.Bind(&clientData)
+	err := requestData.ShouldBind(&clientData)
 	if err != nil {
 		requestData.JSON(http.StatusBadRequest, err.Error())
 		return

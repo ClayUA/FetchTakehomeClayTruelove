@@ -13,7 +13,7 @@ func SpendHandler(requestData *gin.Context) {
 
 	var clientData models.SpendRequest
 
-	err := requestData.Bind(&clientData)
+	err := requestData.ShouldBind(&clientData)
 	if err != nil {
 		fmt.Printf("Could not bind JSON data")
 		requestData.Status(http.StatusBadRequest)
