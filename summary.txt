@@ -4,7 +4,7 @@ I chose Go because it is extremely low latency and it handles concurrency very w
 and has a ton of libraries, but runs slower and has some concurrency concerns with the global interpreter lock.
 I could have used something like Java or Node.js as well, but I really like Golang for speed, scalability, and concurrency.
 
-I chose gin purely from familiarity and I knew it would speed up my developement. I have used it before and
+I chose gin purely from familiarity and I knew it would speed up my development. I have used it before and
 it is a very simple library for manipulating incoming connections. 
 
 Most of the libraries like sync, time, and net/http are in the standard library for go. Another reason why it is a good choice.
@@ -32,14 +32,14 @@ and deploy it on AWS. Every aspect of this project challenged me. Firstly, learn
 different strategies can be a hurdle at first. Having to make decisions involving the project structure can leave some team members upset that
 their idea wasn't chosen. Learning to work respectfully even when your idea isn't selected is a key part of working on a team.
 
-    Secondly, using multiple new technologies to tackle problems was a skill I didn't have at the time. I used to thinkn great engineers simply knew everything, but I
+    Secondly, using multiple new technologies to tackle problems was a skill I didn't have at the time. I used to think great engineers simply knew everything, but I
 realize now that great engineers are able to take on unfamiliar or ambiguous challenges, understand them, and implement solutions quickly. I worked
 on front end components without any experience, I created database schema, I used AWS and several other things that were not familiar. Having a framework for
 problem solving is important when you are consistently presented with ambiguous problems.
     
-    Lastly, I learned how important simplicity and maintinablity is. When I worked by myself naming variables and system structure wasn't
+    Lastly, I learned how important simplicity and maintainability is. When I worked by myself naming variables and system structure wasn't
 a great concern to me. It was only after trying to read someone elses code that I realized how important formatting, naming, and simplicity is. 
-Being able to solve issues in an elegant or simplistic manner can make your codebase much easier to parse and undestand. So while I did develop
+Being able to solve issues in an elegant or simplistic manner can make your codebase much easier to parse and understand. So while I did develop
 coding fundamentals in the classroom, I developed a lot of software engineering fundamentals by working with others on complex projects.
 
 
