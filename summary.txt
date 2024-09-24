@@ -1,0 +1,46 @@
+1. Why did you choose the tools, libraries, and language you used for the coding exercise?
+
+I chose Go because it is extremely low latency and it handles concurrency very well. Python is easier to write
+and has a ton of libraries, but runs slower and has some concurrency concerns with the global interpreter lock.
+I could have used something like Java or Node.js as well, but I really like Golang for speed, scalability, and concurrency.
+
+I chose gin purely from familiarity and I knew it would speed up my developement. I have used it before and
+it is a very simple library for manipulating incoming connections. 
+
+Most of the libraries like sync, time, and net/http are in the standard library for go. Another reason why it is a good choice.
+
+
+2. What are the advantages and disadvantages of your solution?
+
+One advantage my solution has is consistency. I completely lock the user struct when I read or write data.
+This ensures consistent because only one process can access class variables at a time.  With a more broad locking technique
+certain variables may be locked that are never updated or changed. This can slow down the entire system as other processes
+wait for locked variables that aren't being used. Using a lock for each variable would allow more operations to run concurrently, but
+may be more complex to implement and maintain. It would also become increasingly memory heavy as the backend scales.
+Ultimately I chose to start broad because consistency is extremely important when you are working with money or currency based variables.
+It would be a good idea to target bottlenecks and have a more targeted lock approach.
+
+Another advantage my solution has is speed. Using a heap is a really fast way to push and pop transactions because it is
+represented as a tree structure. Although it is technically a tree structure, it is represented by an array which means we don't have to deal
+with storing pointers in memory, saving a large amount of space. A heap allows us to push new transactions and pop the oldest transaction in O(log n)
+which is much faster compared to sorting and array or linked list.
+
+3. What has been a favorite school/personal project thus far? What about it that challenged you?
+
+    I had a class where I had to work with a team to create a full stack application from scratch. We had to create a database, backend, frontend,
+and deploy it on AWS. Every aspect of this project challenged me. Firstly, learning to work with people who have different habits or prefer
+different strategies can be a hurdle at first. Having to make decisions involving the project structure can leave some team members upset that
+their idea wasn't chosen. Learning to work respectfully even when your idea isn't selected is a key part of working on a team.
+
+    Secondly, using multiple new technologies to tackle problems was a skill I didn't have at the time. I used to thinkn great engineers simply knew everything, but I
+realize now that great engineers are able to take on unfamiliar or ambiguous challenges, understand them, and implement solutions quickly. I worked
+on front end components without any experience, I created database schema, I used AWS and several other things that were not familiar. Having a framework for
+problem solving is important when you are consistently presented with ambiguous problems.
+    
+    Lastly, I learned how important simplicity and maintinablity is. When I worked by myself naming variables and system structure wasn't
+a great concern to me. It was only after trying to read someone elses code that I realized how important formatting, naming, and simplicity is. 
+Being able to solve issues in an elegant or simplistic manner can make your codebase much easier to parse and undestand. So while I did develop
+coding fundamentals in the classroom, I developed a lot of software engineering fundamentals by working with others on complex projects.
+
+
+
