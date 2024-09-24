@@ -14,7 +14,7 @@ func SpendHandler(requestData *gin.Context) {
 
 	err := requestData.ShouldBind(&clientData)
 	if err != nil {
-		requestData.JSON(http.StatusBadRequest, "JSON format error")
+		requestData.JSON(http.StatusBadRequest, err.Error())
 		return
 	}
 	// checking that we have enough points
