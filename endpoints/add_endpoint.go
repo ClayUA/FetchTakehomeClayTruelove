@@ -35,5 +35,6 @@ func AddHandler(requestData *gin.Context) {
 
 	models.CurrentUser.AddUserPoints(&clientData)
 	requestData.Status(http.StatusOK)
+	return
 
 }

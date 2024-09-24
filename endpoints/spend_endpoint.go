@@ -22,8 +22,8 @@ func SpendHandler(requestData *gin.Context) {
 		requestData.JSON(http.StatusBadRequest, "Not Enough Points to complete transaction")
 		return
 	}
-
-	requestData.IndentedJSON(http.StatusOK, models.CurrentUser.SpendUserPoints(clientData.Points))
+	spendingMap := models.CurrentUser.SpendUserPoints(clientData.Points)
+	requestData.IndentedJSON(http.StatusOK, spendingMap)
 	return
 
 }
